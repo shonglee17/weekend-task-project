@@ -16,7 +16,7 @@ function renderTask(){
         $('#renderInfo').empty()
         for (let jobs of res){
             $('#renderInfo').append(`
-            <tr class="background">
+            <tr ${conditionalBackgroundColor(jobs)}>
                 <td>${jobs.job}</td>
                 <td>${jobs.description}</td>
                 <td data-status=${jobs.status}>${jobs.status}</td>
@@ -68,5 +68,25 @@ function deleteTask(){
 }
 
 function completeTask(){
-    
+    let updateStatus = $(this).data().id
+    $.ajax({
+      method: 'PUT',
+      url: `/weekend-to-do-app/${updateStatus}`,
+      data: {
+        status: 'complete'
+        }
+    }).then((response)=>{
+      renderTask()
+    }).catch((error) =>{
+      console.log('something broke in PUT: client side', error);
+    })
 }
+
+function conditionalBackgroundColor(jobs) {
+    if (jobs.status === 'complete') {
+      return 'class="background"'
+    }
+    else {
+      return ''
+    }
+  }

@@ -42,7 +42,28 @@ router.post('/', (req, res) => {
         });
 });
 // PUT
+router.put('/:id', (req,res)=>{
+    let idToUpdate = req.params.id
+    let newStatus = req.body.status
+    console.log(idToUpdate);
+    console.log(newStatus);
+    let sqlQuery = `
+    UPDATE "task"
+    SET "status" = $1
+    WHERE "id" = $2;
+    `;
 
+    let sqlValues = [newStatus, idToUpdate]
+
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes)=>{
+        console.log('successful update from put: serverside');
+        res.sendStatus(201)
+    }).catch(( dbErr)=>{
+        console.log('broke in PUT serverside', dbErr);
+        res.sendStatus(500)
+    })
+})
 // DELETE
 router.delete('/:id', (req,res)=>{
     let idToDelete = req.params.id

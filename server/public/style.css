@@ -22,3 +22,7 @@ table, tr, th,td {
 #enterButton{
     margin-bottom: 50px;
 }
+
+.background{
+    background-color: green;
+}
