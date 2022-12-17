@@ -3,6 +3,7 @@ $(document).ready(onReady)
 function onReady(){
     renderTask()
     $('#enterButton').on('click', addTask)
+    $('body').on('click', '.deleteButton',  deleteTask)
 }
 
 function renderTask(){
@@ -16,6 +17,8 @@ function renderTask(){
             <tr>
                 <td>${jobs.job}</td>
                 <td>${jobs.description}</td>
+                <td><button class="completeButton">COMPLETE</button></td>
+                <td><button class="deleteButton" data-id=${jobs.id}>DELETE</button></td>
             </tr>
             `)
         }
@@ -46,4 +49,16 @@ function addTask(){
         console.log('something broke in POST: clientside', error);
       })
 
+}
+
+function deleteTask(){
+    let deleteThis = $(this).data().id
+    $.ajax({
+      method: 'DELETE',
+      url: `/weekend-to-do-app/${deleteThis}`,
+    }).then((response)=>{
+      renderTask()
+    }).catch((error) =>{
+      console.log('something broke in DELETE: client side', error);
+    })
 }

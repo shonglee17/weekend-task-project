@@ -44,7 +44,23 @@ router.post('/', (req, res) => {
 // PUT
 
 // DELETE
+router.delete('/:id', (req,res)=>{
+    let idToDelete = req.params.id
+    let sqlQuery = `
+    DELETE FROM "task"
+    WHERE "id" = $1;
+    `;
 
+    let sqlValues = [idToDelete]
+
+    pool.query(sqlQuery, sqlValues)
+    .then((dbRes)=>{
+        res.sendStatus(201)
+    }).catch(( dbErr)=>{
+        console.log('broke in DELETE serverside', dbErr);
+        res.sendStatus(500)
+    })
+})
 
 
 module.exports = router;
