@@ -23,7 +23,24 @@ router.get('/', (req,res) =>{
 
 })
 // POST
+router.post('/', (req, res) => {
+    let jobToSend = req.body;
 
+    let sqlQuery = `
+        INSERT INTO "task" 
+            ("job", "description")
+        VALUES ($1, $2);
+    `;
+    let sqlValues = [jobToSend.job, jobToSend.description]
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        })
+        .catch((dbErr) => {
+            console.log(`error in POST: serverside`, dbErr);
+            res.sendStatus(500);
+        });
+});
 // PUT
 
 // DELETE

@@ -6,3 +6,19 @@ table, tr, th,td {
     border: 1px solid black;
     border-collapse: collapse;
   }
+
+#jobInput{
+    margin-bottom: 10px;
+}
+
+#descriptionInput{
+    
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: 100px;
+    width: 400px;
+}
+
+#enterButton{
+    margin-bottom: 50px;
+}
