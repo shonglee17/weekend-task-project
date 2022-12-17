@@ -19,7 +19,8 @@ function renderTask(){
             <tr class="background">
                 <td>${jobs.job}</td>
                 <td>${jobs.description}</td>
-                <td>${jobs.status}</td>
+                <td data-status=${jobs.status}>${jobs.status}</td>
+                <td><button class="completeButton" data-id=${jobs.id}>COMPLETE</button></td>
                 <td><button class="deleteButton" data-id=${jobs.id}>DELETE</button></td>
             </tr>
             `)
