@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 app.use(express.static('server/public'));
 
 // ROUTES
-app.use('/task', task)
+app.use('/weekend-to-do-app', task)
 
 // Start listening for requests on a specific port
 app.listen(PORT, () => {
