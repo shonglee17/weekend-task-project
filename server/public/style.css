@@ -26,3 +26,7 @@ table, tr, th,td {
 .background{
     background-color: green;
 }
+
+.default{
+    background-color: yellow;
+}

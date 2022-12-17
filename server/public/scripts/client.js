@@ -87,6 +87,6 @@ function conditionalBackgroundColor(jobs) {
       return 'class="background"'
     }
     else {
-      return ''
+      return 'class="default"'
     }
   }
