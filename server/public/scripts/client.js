@@ -4,6 +4,8 @@ function onReady(){
     renderTask()
     $('#enterButton').on('click', addTask)
     $('body').on('click', '.deleteButton',  deleteTask)
+    $('body').on('click', '.completeButton',  completeTask)
+
 }
 
 function renderTask(){
@@ -14,10 +16,10 @@ function renderTask(){
         $('#renderInfo').empty()
         for (let jobs of res){
             $('#renderInfo').append(`
-            <tr>
+            <tr class="background">
                 <td>${jobs.job}</td>
                 <td>${jobs.description}</td>
-                <td><button class="completeButton">COMPLETE</button></td>
+                <td>${jobs.status}</td>
                 <td><button class="deleteButton" data-id=${jobs.id}>DELETE</button></td>
             </tr>
             `)
@@ -37,7 +39,8 @@ function addTask(){
 
     let postNewJob = {
         job: jobInput,
-        description: descriptionInput
+        description: descriptionInput,
+        status: 'incomplete'
     }
     $.ajax({
         method: 'POST',
@@ -61,4 +64,8 @@ function deleteTask(){
     }).catch((error) =>{
       console.log('something broke in DELETE: client side', error);
     })
+}
+
+function completeTask(){
+    
 }

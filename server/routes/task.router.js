@@ -28,10 +28,10 @@ router.post('/', (req, res) => {
 
     let sqlQuery = `
         INSERT INTO "task" 
-            ("job", "description")
-        VALUES ($1, $2);
+            ("job", "description", "status")
+        VALUES ($1, $2, $3);
     `;
-    let sqlValues = [jobToSend.job, jobToSend.description]
+    let sqlValues = [jobToSend.job, jobToSend.description, jobToSend.status]
     pool.query(sqlQuery, sqlValues)
         .then((dbRes) => {
             res.sendStatus(201);
