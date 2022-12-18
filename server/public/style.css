@@ -1,10 +1,19 @@
 h1{
     color: blue;
+    align-content: center;
+    margin: auto;
 }
 
 table, tr, th,td {
     border: 1px solid black;
     border-collapse: collapse;
+  }
+tr{
+    background-color: tan;
+}
+  th{
+    font-style: italic;
+    font-size: large;
   }
 
 #jobInput{
@@ -26,7 +35,14 @@ table, tr, th,td {
 .background{
     background-color: green;
 }
+body{
+    background-color: cadetblue;
+}
 
 .default{
     background-color: yellow;
+}
+
+.completeButton{
+    align-self: stretch;
 }

@@ -10,7 +10,6 @@ router.get('/', (req,res) =>{
     SELECT * FROM "task"
         ORDER BY "id";
     `;
-
     pool.query(sqlQuery)
     .then((dbRes)=>{
         console.log('success! from GET route: serverside');
@@ -25,11 +24,11 @@ router.get('/', (req,res) =>{
 // POST
 router.post('/', (req, res) => {
     let jobToSend = req.body;
-
     let sqlQuery = `
         INSERT INTO "task" 
             ("job", "description", "status")
-        VALUES ($1, $2, $3);
+        VALUES 
+            ($1, $2, $3);
     `;
     let sqlValues = [jobToSend.job, jobToSend.description, jobToSend.status]
     pool.query(sqlQuery, sqlValues)
@@ -45,16 +44,12 @@ router.post('/', (req, res) => {
 router.put('/:id', (req,res)=>{
     let idToUpdate = req.params.id
     let newStatus = req.body.status
-    console.log(idToUpdate);
-    console.log(newStatus);
+    let sqlValues = [newStatus, idToUpdate]
     let sqlQuery = `
     UPDATE "task"
-    SET "status" = $1
-    WHERE "id" = $2;
+        SET "status" = $1
+        WHERE "id" = $2;
     `;
-
-    let sqlValues = [newStatus, idToUpdate]
-
     pool.query(sqlQuery, sqlValues)
     .then((dbRes)=>{
         console.log('successful update from put: serverside');
@@ -67,13 +62,11 @@ router.put('/:id', (req,res)=>{
 // DELETE
 router.delete('/:id', (req,res)=>{
     let idToDelete = req.params.id
+    let sqlValues = [idToDelete]
     let sqlQuery = `
     DELETE FROM "task"
-    WHERE "id" = $1;
+        WHERE "id" = $1;
     `;
-
-    let sqlValues = [idToDelete]
-
     pool.query(sqlQuery, sqlValues)
     .then((dbRes)=>{
         res.sendStatus(201)

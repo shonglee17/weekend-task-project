@@ -7,11 +7,10 @@ function onReady(){
     $('body').on('click', '.completeButton',  completeTask)
 
 }
-
 function renderTask(){
     $.ajax({
-            type: 'GET',
-            url: '/weekend-to-do-app'
+        type: 'GET',
+        url: '/weekend-to-do-app'
     }).then((res)=>{
         $('#renderInfo').empty()
         for (let jobs of res){
@@ -20,7 +19,7 @@ function renderTask(){
                 <td>${jobs.job}</td>
                 <td>${jobs.description}</td>
                 <td data-status=${jobs.status}>${jobs.status}</td>
-                <td><button class="completeButton" data-id=${jobs.id}>COMPLETE</button></td>
+                <td><button class="completeButton" data-id=${jobs.id}>DONE</button></td>
                 <td><button class="deleteButton" data-id=${jobs.id}>DELETE</button></td>
             </tr>
             `)
@@ -89,4 +88,5 @@ function conditionalBackgroundColor(jobs) {
     else {
       return 'class="default"'
     }
-  }
+}
+

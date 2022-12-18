@@ -16,4 +16,4 @@ INSERT INTO "task"
 	
 	
 	
-	DROP TABLE "task";
+DROP TABLE "task";
