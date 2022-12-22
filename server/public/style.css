@@ -9,7 +9,7 @@ table, tr, th,td {
     border-collapse: collapse;
   }
 tr{
-    background-color: tan;
+    background-color: honeydew;
 }
   th{
     font-style: italic;
@@ -28,21 +28,35 @@ tr{
     width: 400px;
 }
 
+#dateInput{
+    margin-bottom: 10px;
+}
+
 #enterButton{
     margin-bottom: 50px;
 }
 
 .background{
-    background-color: green;
+    background-color: blue;
+    color: white;
 }
 body{
     background-color: cadetblue;
+    
 }
 
 .default{
-    background-color: yellow;
+    background-color: red;
 }
 
 .completeButton{
     align-self: stretch;
+}
+
+section{
+    background-image: url("paper.gif");
+}
+
+table{
+    margin-right: auto;
 }

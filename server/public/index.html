@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./vendors/jquery.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Task Project</h1>
-
-    <div id="inputs">
-        <input id="jobInput" type="text" placeholder="Job">
-    </div>
-
-    <div>
-        <input id="descriptionInput" type="text" placeholder="Describe Job Here">
-    </div>
-
-    <button id="enterButton">ADD JOB</button>
-
-
+    <style>
+      body {
+        background-image: url('https://res-3.cloudinary.com/fieldfisher/image/upload/f_jpg,q_auto/v1/sectors/technology/tech_neoncircuitboard_857021704_medium_lc5h05');
+      }
+    </style>
     <section>
+      <div>
+        <input id="jobInput" type="text" placeholder="Job" />
+      </div>
+
+      
+        <textarea 
+            id="descriptionInput" type="text" placeholder="Describe Job Here">
+        </textarea>
+
+      <div>
+        <input id="dateInput" type="date" />
+      </div>
+      <button id="enterButton">Submit</button>
+
+      <div id="table">
         <table>
-            <thead>
-                <tr>
-                    <th>JOB</th>
-                    <th>DESCRIPTION</th>
-                    <th>STATUS</th>
-                    <th>SIGN OFF</th>
-                    <th>DELETE</th>
-                </tr>
-            </thead>
+          <thead>
+            <tr>
+              <th>JOB</th>
+              <th>DESCRIPTION</th>
+              <th>STATUS</th>
+              <th>DUE IN (days)</th>
+              <th>SIGN OFF</th>
+              <th>DELETE</th>
+            </tr>
+          </thead>
 
-            <tbody id="renderInfo">
-                <!-- this is where the job/description will be appended -->
-            </tbody>
+          <tbody id="renderInfo">
+            <!-- this is where the job/description will be appended -->
+          </tbody>
         </table>
+      </div>
     </section>
-
-
-</body>
+  </body>
 </html>
